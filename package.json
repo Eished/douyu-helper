@@ -1,0 +1,53 @@
+{
+  "name": "douyu-helper",
+  "version": "0.0.1",
+  "description": "斗鱼直播自动切换分辨率，全局设置最高画质或最低画质，单独设置每个直播间：原画、4K、2K、1080p、蓝光、720p、超清、高清清晰度。",
+  "main": "/dist/douyu.user.js",
+  "scripts": {
+    "start": "webpack serve --config ./config/webpack.dev.js --env filename=douyu.dev.user.js",
+    "dev": "webpack --watch --config ./config/webpack.dev.js --env filename=douyu.dev.user.js",
+    "build": "yarn lint:fix && webpack --config ./config/webpack.prod.js --env filename=douyu.user.js",
+    "lint": "eslint \"src/**/*.{ts,tsx}\"",
+    "lint:fix": "yarn lint --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Eished/douyu-helper.git"
+  },
+  "keywords": [
+    "douyu",
+    "TamperMonkey",
+    "typescript"
+  ],
+  "author": "Eished",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Eished/douyu-helper/issues"
+  },
+  "homepage": "https://github.com/Eished/douyu-helper#readme",
+  "devDependencies": {
+    "@babel/core": "^7.17.9",
+    "@babel/preset-env": "^7.16.11",
+    "@types/tampermonkey": "^4.0.5",
+    "@typescript-eslint/eslint-plugin": "^5.19.0",
+    "@typescript-eslint/parser": "^5.19.0",
+    "babel-loader": "^8.2.4",
+    "css-loader": "^6.7.3",
+    "eslint": "^8.13.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-html": "^6.2.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "html-webpack-plugin": "^5.5.0",
+    "less": "^4.1.2",
+    "less-loader": "^10.2.0",
+    "prettier": "^2.6.2",
+    "style-loader": "^3.3.1",
+    "to-string-loader": "^1.2.0",
+    "ts-loader": "^9.2.8",
+    "typescript": "^4.6.3",
+    "webpack": "^5.72.0",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.9.0"
+  },
+  "dependencies": {}
+}

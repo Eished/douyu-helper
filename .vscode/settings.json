@@ -1,0 +1,60 @@
+{
+  "editor.tabSize": 2,
+  "editor.wordWrap": "on",
+  "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
+  "eslint.validate": ["javascript", "html", "vue"],
+  "eslint.format.enable": true,
+  "eslint.options": {
+    "overrideConfig": {
+      "env": {
+        "browser": true,
+        "node": true,
+        "es2021": true
+      },
+      "parserOptions": {
+        "ecmaFeatures": {
+          "jsx": true
+        },
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+      },
+      "rules": {
+        "no-debugger": "off"
+      }
+    }
+  },
+  "editor.formatOnSave": true,
+  "html.format.indentHandlebars": true,
+  "html.format.preserveNewLines": true,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": true,
+    "source.fixAll": true,
+    "source.fixAll.eslint": false
+  },
+  "emmet.includeLanguages": {
+    "vue": "html",
+    "javascript": "html"
+  },
+  "[vue]": {
+    "editor.defaultFormatter": "octref.vetur"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}
