@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name                斗鱼直播助手
 // @namespace           https://github.com/Eished/douyu-helper
-// @version             2022.08.22
+// @version             2026.07.03
 // @description         斗鱼直播自动切换画质，全局设置最高画质或最低画质，可单独设置每个直播间画质：原画、4K、2K、1080p、蓝光、720p、超清、高清清晰度，自动记忆并切换到上次选择的画质。油猴开发模板，Tampermonkey template
 // @author              Eished
 // @copyright           Eished
@@ -26,10 +26,10 @@
 
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-var app = function () {
-    var rid = new URLSearchParams(window.location.search).get('rid');
+const app = () => {
+    let rid = new URLSearchParams(window.location.search).get('rid');
     if (!rid) {
-        var results = window.location.pathname.match(/[\d]{1,10}/);
+        const results = window.location.pathname.match(/[\d]{1,10}/);
         if (results) {
             rid = results[0];
         }
@@ -37,26 +37,25 @@ var app = function () {
             return;
         }
     }
-    var videoSub = document.querySelector('.layout-Player-videoSub');
+    const videoSub = document.querySelector('#js-player-main');
     if (rid && videoSub) {
         autoSelectClarity(rid, videoSub);
     }
 };
-var autoSelectClarity = function (rid, videoSub) {
-    var Clarities = ['全局默认最高画质', '全局默认最低画质'];
-    var selectedClarity = GM_getValue(rid);
-    var defaultClarity = GM_getValue('defaultClarity');
-    var clickClarity = function (li, save) {
-        if (save === void 0) { save = false; }
+const autoSelectClarity = (rid, videoSub) => {
+    const Clarities = ['全局默认最高画质', '全局默认最低画质'];
+    const selectedClarity = GM_getValue(rid);
+    const defaultClarity = GM_getValue('defaultClarity');
+    const clickClarity = (li, save = false) => {
         if (!li.className.includes('selected')) {
             save ? GM_setValue(rid, li.innerText) : null;
             li.click();
         }
     };
-    var selectClarity = function (list) {
+    const selectClarity = (list) => {
         // 注册菜单栏
-        Clarities.forEach(function (clarity, index) {
-            GM_registerMenuCommand(clarity, function () {
+        Clarities.forEach((clarity, index) => {
+            GM_registerMenuCommand(clarity, () => {
                 if (index === 0) {
                     clickClarity(list[0]);
                     GM_setValue('defaultClarity', 1);
@@ -70,9 +69,9 @@ var autoSelectClarity = function (rid, videoSub) {
                 }
             });
         });
-        var notFoundCount = 0;
-        list.forEach(function (li) {
-            var availableClarity = li.innerText;
+        let notFoundCount = 0;
+        list.forEach((li) => {
+            const availableClarity = li.innerText;
             if (selectedClarity === availableClarity) {
                 // 选择自定义画质
                 clickClarity(li);
@@ -81,9 +80,9 @@ var autoSelectClarity = function (rid, videoSub) {
                 notFoundCount++;
             }
             // 防止误触发保存，仅保存真实点击
-            li.addEventListener('click', function (e) { return clickClarity(li, e.isTrusted); });
+            li.addEventListener('click', (e) => clickClarity(li, e.isTrusted));
             // 注册菜单栏
-            GM_registerMenuCommand(availableClarity, function () { return clickClarity(li, true); });
+            GM_registerMenuCommand(availableClarity, () => clickClarity(li, true));
         });
         // 选择默认画质
         if (notFoundCount === list.length) {
@@ -95,16 +94,16 @@ var autoSelectClarity = function (rid, videoSub) {
             }
         }
     };
-    var callback = function (mutations, observer) {
-        var controller = videoSub === null || videoSub === void 0 ? void 0 : videoSub.querySelector("[value=\"\u753B\u8D28 \"]");
+    const callback = (mutations, observer) => {
+        const controller = videoSub?.querySelector(`[value="画质 "]`);
         if (controller) {
             observer.disconnect();
-            var ul = controller.nextElementSibling;
-            var list = ul === null || ul === void 0 ? void 0 : ul.querySelectorAll('li');
+            const ul = controller.nextElementSibling;
+            const list = ul?.querySelectorAll('li');
             list ? selectClarity(list) : console.debug('斗鱼直播助手：未找到画质选项');
         }
     };
-    var observer = new MutationObserver(callback);
+    const observer = new MutationObserver(callback);
     observer.observe(videoSub, {
         childList: true,
         subtree: true,
@@ -146,7 +145,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-var app_1 = __importDefault(__webpack_require__(752));
+const app_1 = __importDefault(__webpack_require__(752));
 if (true) {
     (0, app_1.default)();
 }
