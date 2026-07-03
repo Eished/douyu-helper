@@ -1,5 +1,9 @@
 name: NodeJS with Webpack
 
+permissions:
+  contents: write
+  pages: write
+
 on:
   push:
     branches: [main]
@@ -27,8 +31,9 @@ jobs:
           yarn install
           yarn build
 
-      - name: Auto build user.js to main branch
+      - name: Deploy dist to gh-pages branch
         uses: JamesIves/github-pages-deploy-action@4.1.1
         with:
-          branch: main
-          folder: .
+          branch: gh-pages
+          folder: dist
+          clean: true
