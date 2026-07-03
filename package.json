@@ -28,7 +28,7 @@
   "devDependencies": {
     "@babel/core": "^7.17.9",
     "@babel/preset-env": "^7.16.11",
-    "@types/tampermonkey": "^4.0.5",
+    "@types/tampermonkey": "^5.0.5",
     "@typescript-eslint/eslint-plugin": "^5.19.0",
     "@typescript-eslint/parser": "^5.19.0",
     "babel-loader": "^8.2.4",

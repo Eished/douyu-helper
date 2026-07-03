@@ -8,7 +8,7 @@ const app = () => {
       return;
     }
   }
-  const videoSub = document.querySelector('.layout-Player-videoSub');
+  const videoSub = document.querySelector('#js-player-main');
 
   if (rid && videoSub) {
     autoSelectClarity(rid, videoSub);
