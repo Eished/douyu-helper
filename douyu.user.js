@@ -95,11 +95,11 @@ const autoSelectClarity = (rid, videoSub) => {
         }
     };
     const callback = (mutations, observer) => {
-        const controller = videoSub === null || videoSub === void 0 ? void 0 : videoSub.querySelector(`[value="画质 "]`);
+        const controller = videoSub?.querySelector(`[value="画质 "]`);
         if (controller) {
             observer.disconnect();
             const ul = controller.nextElementSibling;
-            const list = ul === null || ul === void 0 ? void 0 : ul.querySelectorAll('li');
+            const list = ul?.querySelectorAll('li');
             list ? selectClarity(list) : console.debug('斗鱼直播助手：未找到画质选项');
         }
     };
