@@ -1,7 +1,7 @@
 {
   "name": "斗鱼直播助手",
   "namespace": "https://github.com/Eished/douyu-helper",
-  "version": "2022.08.22",
+  "version": "2026.07.03",
   "description": "斗鱼直播自动切换画质，全局设置最高画质或最低画质，可单独设置每个直播间画质：原画、4K、2K、1080p、蓝光、720p、超清、高清清晰度，自动记忆并切换到上次选择的画质。油猴开发模板，Tampermonkey template",
   "author": "Eished",
   "copyright": "Eished",
